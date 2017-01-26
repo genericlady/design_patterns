@@ -1,0 +1,7 @@
+task :console do
+  require 'pry'
+  require './config/environment'
+  exec "pry -r./bin/weather_station.rb"
+  ARGV.clear
+  Pry.start
+end
