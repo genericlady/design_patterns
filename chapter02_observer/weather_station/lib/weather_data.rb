@@ -1,23 +1,10 @@
-class WeatherData < Subject
+class WeatherData
+  include Observable
+
   def initialize
-    @observers = []
     @temperature
     @humidity
     @pressure
-  end
-
-  def register_observer(observer)
-    @observers << observer
-  end
-
-  def remove_observer(observer)
-    @observers.remove(observer)
-  end
-
-  def notify_observers
-    @observers.each do |observer|
-      observer.update(@temperature, @humidity, @pressure)
-    end
   end
 
   def set_measurements(temperature, humidity, pressure)
@@ -29,7 +16,20 @@ class WeatherData < Subject
   end
 
   def measurements_changed
-    notify_observers
+    changed
+    notify_observers(self)
+  end
+
+  def temperature
+    @temperature || 0
+  end
+
+  def humidity
+    @humidity || 0
+  end
+
+  def pressure
+    @pressure || 0
   end
 
 end

@@ -12,7 +12,6 @@ module WeatherStation
     weather_data.set_measurements(82, 70, 29.2)
     weather_data.set_measurements(78, 90, 29.2)
 
-    current_display.display
   end
 end
 
